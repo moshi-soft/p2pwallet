@@ -5,8 +5,9 @@ namespace App\Http\Requests\Api;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Validation\Rule;
 
-class LoginRequest extends FormRequest
+class PaymentRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,8 +27,9 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|email',
-            'password' => 'required',
+            'to_user' => ['required'],
+            'payment_type' => ['required', Rule::in(explode(',',env('PAYMENT_METHOD')))],
+            'amount' =>  ['required', 'numeric'],
         ];
     }
     public function failedValidation(Validator $validator)

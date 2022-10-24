@@ -1,0 +1,4 @@
+// make ready .env.example according to .env
+
+php artisan migrate
+php artisan db:seed --class=UserSeeder

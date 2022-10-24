@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use Illuminate\Http\Client\Response;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\ServiceProvider;
 
 class ResponseMacroServiceProvider extends ServiceProvider
@@ -24,17 +24,18 @@ class ResponseMacroServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Response::macro('success', static function ($data) {
+        Response::macro('success', function ($data,int $status = 200) {
             return Response::json([
-                'errors'  => false,
+                'success' => true,
                 'data' => $data,
-            ]);
+            ],$status);
         });
 
-        Response::macro('error', static function ($message, $status = 400) {
+        Response::macro('error', function (string $message, $data=[], int $status = 400) {
             return Response::json([
-                'errors'  => true,
+                'success' => false,
                 'message' => $message,
+                'errors' => $data,
             ], $status);
         });
     }

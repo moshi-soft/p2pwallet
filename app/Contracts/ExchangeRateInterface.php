@@ -6,6 +6,5 @@ use Illuminate\Http\Request;
 
 interface ExchangeRateInterface
 {
-    public function checkRate(Request $request);
-
+    public function checkRate($amount, $from_currency, $to_currency,$date);
 }
