@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -16,14 +17,14 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
+        User::create([
             'name' => 'A',
             'email' => 'a@example.com',
             'currency' => 'USD',
             'primary_wallet' => 500,
             'password' => Hash::make('123456'),
         ]);
-        DB::table('users')->insert([
+        User::create([
             'name' => 'B',
             'email' => 'b@example.com',
             'currency' => 'EUR',

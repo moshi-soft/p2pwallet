@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AuthenticationController;
 use App\Http\Controllers\Api\PaymentController;
+use App\Http\Controllers\Api\ReportController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,11 +19,10 @@ Route::post('login', [AuthenticationController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('logout', [AuthenticationController::class, 'logout']);
-
     Route::post('pay', [PaymentController::class, 'pay']);
+    // report
+    Route::get('most-converted-user', [ReportController::class, 'mostConvertedUser']);
+    Route::get('total-converted-amount/{user_id}', [ReportController::class, 'totalConvertedAmount']);
+    Route::get('total-converted-amount/{user_id}', [ReportController::class, 'totalConvertedAmount']);
+    Route::get('third-highest-transacted-amount/{user_id}', [ReportController::class, 'thirdHighestTransactedAmount']);
 });
-
-
-//Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//    return $request->user();
-//});

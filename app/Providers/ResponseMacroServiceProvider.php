@@ -31,7 +31,7 @@ class ResponseMacroServiceProvider extends ServiceProvider
             ],$status);
         });
 
-        Response::macro('error', function (string $message, $data=[], int $status = 400) {
+        Response::macro('error', function (string $message, $data, int $status = 400) {
             return Response::json([
                 'success' => false,
                 'message' => $message,

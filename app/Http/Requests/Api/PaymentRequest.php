@@ -2,6 +2,9 @@
 
 namespace App\Http\Requests\Api;
 
+use App\Contracts\WalletRepositoryInterface;
+use App\Repository\WalletRepository;
+use App\Rules\WalletBalanceCheck;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
@@ -29,7 +32,7 @@ class PaymentRequest extends FormRequest
         return [
             'to_user' => ['required'],
             'payment_type' => ['required', Rule::in(explode(',',env('PAYMENT_METHOD')))],
-            'amount' =>  ['required', 'numeric'],
+            'amount' =>  ['required', 'numeric',new WalletBalanceCheck(user_id: $this->user()->id,walletRepository: new WalletRepository())],
         ];
     }
     public function failedValidation(Validator $validator)

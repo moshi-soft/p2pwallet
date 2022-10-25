@@ -6,11 +6,13 @@ use App\Contracts\PayableMethodInterface;
 
 class PaypalPayment implements PayableMethodInterface
 {
-    public function pay($payableData)
+    public function payFrom(int $from, int $to, float $amount, string $currency, string $action_type)
     {
-        return 'ok';
-        // TODO: Implement makePayment() method.
+        // TODO: Implement payFrom() method.
     }
 
-
+    public function payTo(int $from, int $to, float $convertedAmount, string $currency, string $action_type)
+    {
+        // TODO: Implement payTo() method.
+    }
 }

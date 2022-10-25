@@ -1,4 +1,11 @@
-// make ready .env.example according to .env
+// make a copy of .env.example to .env
+// Give the api key of fixer.io for currency rate check to the env variable FIXER_EXCHANGE_RATE_API_KEY
 
+
+// run the following command
 php artisan migrate
 php artisan db:seed --class=UserSeeder
+php artisan db:seed --class=UserWalletSeeder
+
+// import insomnia json file named Insomnia-All_2022-10-26.json from root folder of the project into insomnia api testing tool
+// done
