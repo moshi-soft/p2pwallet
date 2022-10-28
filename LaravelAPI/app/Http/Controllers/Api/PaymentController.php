@@ -24,6 +24,7 @@ class PaymentController extends Controller
         TransactionHistoryRepositoryInterface  $transactionHistoryRepository
     )
     {
+//        dd(auth()->user()['name']);
         $input = $paymentRequest->validated();
         $senderWallet = $walletRepository->getWallet(auth()->id());
         $receiverWallet = $walletRepository->getWallet($input['to_user']);
@@ -40,7 +41,13 @@ class PaymentController extends Controller
             $paymentMethod = $payment->init($input['payment_type']);
             $paymentMethod->pay(auth()->id(), $receiverWallet->id, $response['query']['amount'], $response['result']);
             $transactionHistoryRepository->create(auth()->id(), $receiverWallet->id, $response['query']['from'], $response['query']['to'], $response['info']['rate'], $response['query']['amount'], $response['result']);
-            // Notify through email queue
+            // Notify through email
+            $notifiable->notifyViaEmail($receiverWallet['email'],'Payment Received',[
+                'amount'=>$response['result'],
+                'currency'=>$response['query']['to'],
+                'fromName'=>auth()->user()['name'],
+                'fromEmail'=>auth()->user()['email']
+            ]);
 
             DB::commit();
         } catch (\Exception $e) {

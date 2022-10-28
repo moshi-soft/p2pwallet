@@ -1,13 +1,13 @@
 <template>
   <Navbar/>
-  <div class="p-10">
+  <div class="pl-2 pt-2">
     <RouterView/>
   </div>
   <overly v-if="store.startAjaxLoading" />
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref,provide } from 'vue'
 import {useAuthenticationStore} from '../src/store/authentication';
 import Navbar from './components/layout/Navbar.vue';
 import overly from '../src/components/lib/overly.vue';
@@ -21,6 +21,7 @@ js.src = "/node_modules/flowbite/dist/flowbite.js";
 document.body.appendChild(js);
 
 const store = useAuthenticationStore();
+provide('providedStore', store)
 
 const email = ref(null)
 const password = ref(null)

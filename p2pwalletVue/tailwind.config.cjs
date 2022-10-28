@@ -21,6 +21,7 @@ module.exports = {
       'slate':'#1e293b',
       'emerald':'#059669',
       'sky':'#0c4a6e',
+      'teal':'#134e4a',
     },
   },
   plugins: [

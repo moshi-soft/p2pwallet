@@ -3,12 +3,10 @@
 namespace App\Services;
 
 use App\Contracts\NotifiableInterface;
-use App\Contracts\PaymentInterface;
-use Illuminate\Http\Request;
 
 class NotifiableService implements NotifiableInterface
 {
-    public function notifyViaEmail()
+    public function notifyViaEmail($email,$subject,array $paymentInfo)
     {
         // TODO: Implement notifyViaEmail() method.
     }
