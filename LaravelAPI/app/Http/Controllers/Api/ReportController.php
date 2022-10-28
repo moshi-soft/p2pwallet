@@ -16,12 +16,18 @@ class ReportController extends Controller
     {
         return $this->report->whoConvertedMost();
     }
-    public function totalConvertedAmount($user_id)
+
+    public function totalConvertedAmount($user_id = null)
     {
+        $user_id = $user_id ?? auth()->id();
+        //dd($user_id);
         return $this->report->totalConvertedAmount($user_id);
     }
-    public function thirdHighestTransactedAmount($user_id)
+
+    public function thirdHighestTransactedAmount($user_id = null)
     {
+        $user_id = $user_id ?? auth()->id();
+        //dd($user_id);
         return $this->report->thirdHighestTransactedAmount($user_id);
     }
 }

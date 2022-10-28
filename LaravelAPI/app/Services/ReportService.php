@@ -26,7 +26,7 @@ class ReportService implements ReportInterface
 
     public function thirdHighestTransactedAmount($user_id)
     {
-        return User::select(['name', 'id'])
+        $records = User::select(['name', 'id'])
             ->addSelect(
                 ['applied_amount' => TransactionHistory::select(
                     DB::raw('max(applied_amount)'))
@@ -37,5 +37,9 @@ class ReportService implements ReportInterface
                 ])
             ->where('id', '=', $user_id)
             ->get();
+        if (count($records)){
+            return $records[0];
+        }
+        return [];
     }
 }
