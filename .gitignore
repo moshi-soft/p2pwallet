@@ -1,9 +1,9 @@
-/node_modules
-/public/build
-/public/hot
-/public/storage
-/storage/*.key
-/vendor
+/LaravelAPI/node_modules
+/LaravelAPI/public/build
+/LaravelAPI/public/hot
+/LaravelAPI/public/storage
+/LaravelAPI/storage/*.key
+/LaravelAPI/vendor
 .env
 .env.backup
 .phpunit.result.cache
@@ -12,5 +12,41 @@ Homestead.yaml
 auth.json
 npm-debug.log
 yarn-error.log
-/.idea
-/.vscode
+.idea
+.vscode
+
+
+.DS_Store
+node_modules
+/p2pwalletVue/dist
+/p2pwalletVue/resources
+/p2pwalletVue/components
+package-lock.json
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+testem.log
+/typings
+
+# local env files
+.env.local
+.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw*
+
