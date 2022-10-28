@@ -2,19 +2,15 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\AppConfig;
 use App\Contracts\ExchangeRateHistoryRepositoryInterface;
 use App\Contracts\ExchangeRateInterface;
 use App\Contracts\NotifiableInterface;
 use App\Contracts\PaymentInterface;
 use App\Contracts\TransactionHistoryRepositoryInterface;
-use App\Contracts\WalletHistoryRepositoryInterface;
 use App\Contracts\WalletRepositoryInterface;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\PaymentRequest;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class PaymentController extends Controller
 {
@@ -25,9 +21,7 @@ class PaymentController extends Controller
         ExchangeRateInterface                  $exchangeRate,
         ExchangeRateHistoryRepositoryInterface $exchangeRateRepository,
         WalletRepositoryInterface              $walletRepository,
-        TransactionHistoryRepositoryInterface  $transactionHistoryRepository,
-        WalletHistoryRepositoryInterface       $walletHistoryRepository
-
+        TransactionHistoryRepositoryInterface  $transactionHistoryRepository
     )
     {
         $input = $paymentRequest->validated();
