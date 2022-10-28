@@ -6,7 +6,7 @@ const ajaxClient = axios.create({
   baseURL: `${import.meta.env.VITE_API_URL}`, // local server
   headers: {
     "Content-type": "application/json",
-    token: localStorage.getItem('token'),
+    token: "Bearer "+localStorage.getItem('token'),
   },
 });
 

@@ -5,8 +5,8 @@
                 <div class="flex flex-row">
                     <div class="basis-1/2 sm:1/1">
                         {{ new Intl.NumberFormat('en-US', {
-                                style: 'currency', currency: wallet.currency
-                            }).format(wallet.balance)
+                                style: 'currency', currency: currency
+                            }).format(balance)
                         }}
                     </div>
                 </div>
@@ -16,9 +16,10 @@
 <script setup>
 // in <script setup>
 defineProps({
-  wallet: Array
+    balance: 0,
+    currency: ''
 })
 
-const wallet = { currency: 'EUR', balance: 500000 }
+// const wallet = { currency: 'EUR', balance: 500000 }
 
 </script>
