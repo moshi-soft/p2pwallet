@@ -4,5 +4,5 @@ namespace App\Contracts;
 
 interface NotifiableInterface
 {
-    public function notifyViaEmail();
+    public function notifyViaEmail($email,$subject,array $paymentInfo);
 }

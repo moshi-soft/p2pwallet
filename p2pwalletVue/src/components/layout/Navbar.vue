@@ -35,10 +35,10 @@
             <router-link to="/payment" class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
               >Payment</router-link>
           </li>
-          <li>
+          <!-- <li>
             <router-link to="/transaction-history" class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
               >Transaction Hisotry</router-link>
-          </li>
+          </li> -->
           <li>
             <a href="#" @click="logout" class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Logout</a>
           </li>
@@ -46,11 +46,11 @@
       </div>
     </div>
   </nav>
-  <GreetingVue class="bg-gray-100 mt-10 py-6 flex flex-col sm:py-12"/>
+  <GreetingVue class="bg-gray-100 mt-7 flex flex-col pt-12"/>
     </div>
 </template>
 <script setup>
-import GreetingVue from '../greeting.vue';
+import GreetingVue from '../Greeting.vue';
 import {useAuthenticationStore} from '../../../src/store/authentication';
 
 const store = useAuthenticationStore();

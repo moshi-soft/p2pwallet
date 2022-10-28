@@ -11,7 +11,7 @@ export const useAuthenticationStore = defineStore("authentication", {
     errorList: [],
     showError: false,
     loggedIn: localStorage.getItem("loggedIn"),
-    userDetail: JSON.parse(localStorage.getItem("userDetail")),
+    userDetail: localStorage.getItem("userDetail"),
     token: localStorage.getItem("token"),
   }),
   getters: {
@@ -20,13 +20,29 @@ export const useAuthenticationStore = defineStore("authentication", {
       // return state.loggedIn;
     },
     getUser: (state) => {
-      return JSON.parse(localStorage.getItem("userDetail"));
+      // console.log(state.userDetail)
+     //let  abc = JSON.parse(localStorage.getItem("userDetail"));
+     try{
+      let user = JSON.parse(state.userDetail);
+      return user
+     }catch($e){
+
+     }
+     
+    //  console.log(user.name)
+    //  return;
+      return ;
     },
     getToken: (state) => {
-      return localStorage.getItem("token");
+      return state.token;
     },
   },
   actions: {
+    updateLoginState(){
+      this.token = localStorage.getItem("token");
+      this.loggedIn = localStorage.getItem("loggedIn");
+      this.userDetail = localStorage.getItem("userDetail");
+    },
     clearErrorState() {
       this.showError = false;
       this.errorList = [];
@@ -35,7 +51,7 @@ export const useAuthenticationStore = defineStore("authentication", {
     handleAjaxClientError(response){
       this.startAjaxLoading = false;
       this.showError = true;
-      console.log(response);
+      //console.log(response);
       if (response.status == 401) {
         this.errorTitle = response.data.message;
       }
@@ -46,6 +62,12 @@ export const useAuthenticationStore = defineStore("authentication", {
           this.errorList.push(response.data.errors[key]);
         });
       }
+    },
+    axiosHeader() {
+      return {
+        "Content-type": "application/json",
+        Authorization: "Bearer " + this.token,
+      };
     },
     async tryLogin(email, password) {
       // console.log(this.ajaxClient);
@@ -60,7 +82,6 @@ export const useAuthenticationStore = defineStore("authentication", {
         )
         .then((response) => {
           this.startAjaxLoading = false;
-          //console.log(response.data.data);
           localStorage.setItem("token", response.data.data.token);
           const userDetail = JSON.stringify({
             name: response.data.data.name,
@@ -68,7 +89,7 @@ export const useAuthenticationStore = defineStore("authentication", {
           });
           localStorage.setItem("userDetail", userDetail);
           localStorage.setItem("loggedIn", true);
-          this.loggedIn = localStorage.getItem("loggedIn");
+          this.updateLoginState()
           // return true;
           // const router = useRouter()
           this.router.push({ name: "Dashboard" });
@@ -82,13 +103,14 @@ export const useAuthenticationStore = defineStore("authentication", {
           }
           
           this.handleAjaxClientError(error.response)
+          
         });
     },
     logout() {
       localStorage.removeItem("token");
       localStorage.removeItem("userDetail");
       localStorage.removeItem("loggedIn");
-      this.loggedIn = localStorage.getItem("loggedIn");
+      this.updateLoginState()
 
       this.clearErrorState();
       this.startAjaxLoading = true;

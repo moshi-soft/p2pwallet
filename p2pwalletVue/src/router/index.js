@@ -31,14 +31,14 @@ const routes = [
       requiresAuth: true,
     },
   },
-  {
-    path: "/transaction-history",
-    name: "TransactionHistory",
-    component: TransactionHistory,
-    // meta:{
-    //   requiresAuth:true
-    // },
-  },
+  // {
+  //   path: "/transaction-history",
+  //   name: "TransactionHistory",
+  //   component: TransactionHistory,
+  //   // meta:{
+  //   //   requiresAuth:true
+  //   // },
+  // },
   {
     path: "/404",
     name: "404",
