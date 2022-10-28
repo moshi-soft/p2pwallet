@@ -32,7 +32,7 @@
                     Total Converted Amount By Me:
                 </th>
                 <td class="py-4 px-6">
-                   {{totalConvertedAmount}}
+                   {{totalConvertedAmount}}({{pStore.getUser.currency}})
                 </td>
             </tr>
             <tr class="bg-white dark:bg-gray-800">
@@ -40,7 +40,7 @@
                     Third Highest Converted Amount By Me:
                 </th>
                 <td class="py-4 px-6">
-                    {{thirdHighestConvertedAmount}}
+                    {{thirdHighestConvertedAmount}}({{pStore.getUser.currency}})
                 </td>
             </tr>
         </tbody>
