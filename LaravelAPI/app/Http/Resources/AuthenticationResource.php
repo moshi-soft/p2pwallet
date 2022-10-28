@@ -18,6 +18,7 @@ class AuthenticationResource extends JsonResource
             'id' => $this['id'],
             'name' => $this['name'],
             'email' => $this['email'],
+            'currency' => $this['currency'],
             'token' => $this['token'],
             'token_type' => 'Bearer',
         ];

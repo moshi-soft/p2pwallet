@@ -28,7 +28,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('pay', [PaymentController::class, 'pay']);
     // report
     Route::get('most-converted-user', [ReportController::class, 'mostConvertedUser']);
-    Route::get('total-converted-amount/{user_id}', [ReportController::class, 'totalConvertedAmount']);
-    Route::get('total-converted-amount/{user_id}', [ReportController::class, 'totalConvertedAmount']);
-    Route::get('third-highest-transacted-amount/{user_id}', [ReportController::class, 'thirdHighestTransactedAmount']);
+    Route::get('total-converted-amount/{user_id?}', [ReportController::class, 'totalConvertedAmount']);
+    Route::get('third-highest-transacted-amount/{user_id?}', [ReportController::class, 'thirdHighestTransactedAmount']);
 });

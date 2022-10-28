@@ -86,6 +86,7 @@ export const useAuthenticationStore = defineStore("authentication", {
           const userDetail = JSON.stringify({
             name: response.data.data.name,
             email: response.data.data.email,
+            currency: response.data.data.currency,
           });
           localStorage.setItem("userDetail", userDetail);
           localStorage.setItem("loggedIn", true);
