@@ -6,6 +6,7 @@ import Payment from "../views/Payment.vue";
 import TransactionHistory from "../views/TransactionHistory.vue";
 
 import NotFound from "../views/NotFound.vue";
+import NetworkIssue from "../views/NetworkIssue.vue";
 // import NetworkIssue from '../views/NetworkIssue.vue'
 
 const routes = [
@@ -44,14 +45,14 @@ const routes = [
     component: NotFound,
     props: true,
   },
-  //   {
-  //     path:'/network-issue',
-  //     name:'network-issue',
-  //     component:NetworkIssue
-  //   },
+    {
+      path:'/network-issue',
+      name:'network-issue',
+      component:NetworkIssue
+    },
   {
     path: "/:catchAll(.*)*",
-    redirect: { name: "404", params: { resource: "page" } },
+    redirect: { name: "404", params: { resource: "views" } },
     // redirect: () => {
     //   return { path: '/404' }
     //   // the function receives the target route as the argument

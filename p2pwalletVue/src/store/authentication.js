@@ -74,6 +74,13 @@ export const useAuthenticationStore = defineStore("authentication", {
           this.router.push({ name: "Dashboard" });
         })
         .catch((error) => {
+          //console.log(error)
+          if(error.code == "ERR_NETWORK"){
+            this.router.push({ name: "network-issue" });
+            this.startAjaxLoading = false;
+            return false;
+          }
+          
           this.handleAjaxClientError(error.response)
         });
     },
