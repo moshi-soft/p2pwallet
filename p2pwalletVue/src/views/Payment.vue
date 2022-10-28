@@ -6,7 +6,7 @@
                 <alertDanger v-if="pStore.showError"  error-message="Validation Error" />
                 <CheckBalance :balance="walletBalance" :currency="walletCurrency" />
                 <hr>
-                <Pay :payableUsers="userlist" :currency="walletCurrency" />
+                <Pay :payableUsers="userlist" :currency="walletCurrency" :balance="walletBalance" />
             </div>
         </div>
 
@@ -28,13 +28,13 @@ onMounted(() => {
 })
 
 async function getSelfWallet() {
+    pStore.startAjaxLoading = true;
     await pStore.ajaxClient
         .get("wallet",{headers:{
             "Content-type": "application/json",
             Authorization: `Bearer ${pStore.token}`,
         }})
         .then((response) => {
-            
             pStore.showError = false;
             pStore.startAjaxLoading = false;
             walletCurrency.value = response.data.currency
@@ -54,6 +54,7 @@ async function getSelfWallet() {
 }
 
 async function getPayableUser() {
+    pStore.startAjaxLoading = true;
     await pStore.ajaxClient
         .get("payable-user-list",{headers:{
             "Content-type": "application/json",
