@@ -1,0 +1,18 @@
+#for Laravel API Backend
+
+// make a copy of .env.example to .env
+// Give the api key of fixer.io for currency rate check to the env variable FIXER_EXCHANGE_RATE_API_KEY
+
+// setup database
+// run the following command
+php artisan migrate
+php artisan db:seed --class=UserSeeder
+php artisan db:seed --class=UserWalletSeeder
+
+#for Frontend 
+
+// make a copy of .env.example to .env and give the api base url
+// vite, tailwindcss, Vee-validate, axios, Headless ui are used
+run command:
+npm install
+npm run dev
