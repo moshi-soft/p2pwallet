@@ -35,7 +35,6 @@ async function getSelfWallet() {
             Authorization: `Bearer ${pStore.token}`,
         }})
         .then((response) => {
-            
             pStore.showError = false;
             pStore.startAjaxLoading = false;
             walletCurrency.value = response.data.currency

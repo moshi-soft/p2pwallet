@@ -42,9 +42,9 @@
             </div>
 
             <div>
-                {{ to_user }}
+                <!-- {{ to_user }}
                 {{ selected_payment_type }}
-                {{ amount }}
+                {{ amount }} -->
                 <label for="to_user" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Pay
                     To</label>
                 <Field :rules="isRquired" name="to_user" as="select" v-model="to_user" id="to_user"
@@ -132,7 +132,7 @@ async function pay(values) {
             pStore.showError = false;
             pStore.startAjaxLoading = false;
             // console.log(response.data)
-            userlist.value = response.data
+            pStore.router.push({ name: "PaymentSuccess" });
             // console.log(userList);
         })
         .catch((error) => {
@@ -142,8 +142,8 @@ async function pay(values) {
                 pStore.startAjaxLoading = false;
                 return false;
             }
-            // console.log(error);
-            // return;
+            console.log(error);
+            return;
             pStore.handleAjaxClientError(error.response)
         });
 }

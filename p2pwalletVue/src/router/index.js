@@ -3,7 +3,8 @@ import { createRouter, createWebHistory } from "vue-router";
 import Login from "../views/Login.vue";
 import Dashboard from "../views/Dashboard.vue";
 import Payment from "../views/Payment.vue";
-import TransactionHistory from "../views/TransactionHistory.vue";
+import PaymentSuccess from "../views/PaymentSuccess.vue";
+// import TransactionHistory from "../views/TransactionHistory.vue";
 
 import NotFound from "../views/NotFound.vue";
 import NetworkIssue from "../views/NetworkIssue.vue";
@@ -27,6 +28,14 @@ const routes = [
     path: "/payment",
     name: "Payment",
     component: Payment,
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
+    path: "/payment-success",
+    name: "PaymentSuccess",
+    component: PaymentSuccess,
     meta: {
       requiresAuth: true,
     },
