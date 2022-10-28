@@ -57,20 +57,14 @@ var js = document.createElement("script");
 js.type = "text/javascript";
 js.src = "/node_modules/flowbite/dist/flowbite.js";
 document.body.appendChild(js);
-// const showError = ref(true)
+
 const email = ref(null)
 const password = ref(null)
-// const isLoading = ref(false);
 const store = useAuthenticationStore();
 async function login(values) {
     await store.tryLogin(values.email,values.password)
-    // setTimeout(function () {
-    //     isLoading.value = false
-    // }, 2000)
-    // isLoading.value = true
-    //console.log(values);
-    //console.log('Submitted');
 }
+// make the validation helper file for DRY
 function validateEmail(value) {
     // if the field is empty
     if (!value) {
