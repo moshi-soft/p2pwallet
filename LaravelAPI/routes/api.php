@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\AuthenticationController;
 use App\Http\Controllers\Api\PaymentController;
 use App\Http\Controllers\Api\ReportController;
+use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\WalletController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +21,9 @@ Route::post('login', [AuthenticationController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('logout', [AuthenticationController::class, 'logout']);
+
+    Route::get('payable-user-list', [UserController::class, 'payableUserList']);
+
     Route::get('wallet', [WalletController::class, 'userWallet']);
     Route::post('pay', [PaymentController::class, 'pay']);
     // report

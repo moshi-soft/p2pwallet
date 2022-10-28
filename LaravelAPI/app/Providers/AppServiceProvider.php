@@ -9,10 +9,12 @@ use App\Contracts\NotifiableInterface;
 use App\Contracts\PaymentInterface;
 use App\Contracts\ReportInterface;
 use App\Contracts\TransactionHistoryRepositoryInterface;
+use App\Contracts\UserRepositoryInterface;
 use App\Contracts\WalletHistoryRepositoryInterface;
 use App\Contracts\WalletRepositoryInterface;
 use App\Repository\ExchangeRateHistoryRepository;
 use App\Repository\TransactionHistoryRepository;
+use App\Repository\UserRepository;
 use App\Repository\WalletHistoryRepository;
 use App\Repository\WalletRepository;
 use App\Services\ExchangeRateService;
@@ -38,6 +40,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(ExchangeRateInterface::class, ExchangeRateService::class);
         $this->app->bind(ReportInterface::class, ReportService::class);
         // repository
+        $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
         $this->app->bind(WalletRepositoryInterface::class, WalletRepository::class);
         $this->app->bind(WalletHistoryRepositoryInterface::class, WalletHistoryRepository::class);
         $this->app->bind(TransactionHistoryRepositoryInterface::class, TransactionHistoryRepository::class);
