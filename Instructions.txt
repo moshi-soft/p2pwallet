@@ -9,10 +9,18 @@ php artisan migrate
 php artisan db:seed --class=UserSeeder
 php artisan db:seed --class=UserWalletSeeder
 
-#for Frontend 
+#for Frontend
 
 // make a copy of .env.example to .env and give the api base url
 // vite, tailwindcss, Vee-validate, axios, Headless ui are used
 run command:
 npm install
 npm run dev
+
+//default user:
+#1
+email:a@example.com
+pass: 123456
+#2
+email:b@example.com
+pass: 123456
