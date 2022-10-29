@@ -4,7 +4,7 @@
 /LaravelAPI/public/storage
 /LaravelAPI/storage/*.key
 /LaravelAPI/vendor
-.env
+LaravelAPI/.env
 .env.backup
 .phpunit.result.cache
 Homestead.json
